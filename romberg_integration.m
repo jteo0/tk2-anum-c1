@@ -1,4 +1,4 @@
-function [R, elapsed_time] = RombergAutoSubdivisions(f, a, b, tol, m)
+function [R, elapsed_time] = romberg_integration(f, a, b, tol, m)
     % Input:
     % f: function handle for the integrand
     % a: lower limit of integration

@@ -1,4 +1,4 @@
-function [I, elapsed_time] = compositeSimpson(f, a, b, n, y)
+function [I, elapsed_time] = composite_simpson(f, a, b, n, y)
     % Input:
     % f: function handle of the integrand
     % a: lower limit of integration
