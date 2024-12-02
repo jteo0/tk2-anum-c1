@@ -1,4 +1,4 @@
-function [result, error, R] = romberg_integration(f, a, b, tol, m)
+function [result, error, R, time] = romberg_integration(f, a, b, tol, m)
     % Input:
     % f: function handle for the integrand
     % a: lower limit of integration
@@ -9,6 +9,9 @@ function [result, error, R] = romberg_integration(f, a, b, tol, m)
     % result: the integral approximation
     % error: the estimated error
     % R: the final Romberg table
+    % time: execution time
+
+    tic; % Start timing
 
     R = zeros(m, m); % Initialize Romberg table
     h = b - a;       % Initial step size
@@ -35,6 +38,7 @@ function [result, error, R] = romberg_integration(f, a, b, tol, m)
             result = R(k, k);
             error = abs(R(k, k) - R(k-1, k-1));
             R = R(1:k, 1:k); % Trim the Romberg table to the used size
+            time = toc; % End timing
             return;
         end
     end
@@ -42,6 +46,7 @@ function [result, error, R] = romberg_integration(f, a, b, tol, m)
     % If convergence is not reached within m iterations
     result = R(m, m);
     error = abs(R(m, m) - R(m-1, m-1));
+    time = toc; % End timing
     warning('Romberg integration did not converge within the specified refinement levels');
 end
 

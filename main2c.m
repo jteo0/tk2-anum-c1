@@ -43,8 +43,6 @@ end
 fprintf('\nRomberg Integration Results:\n');
 fprintf('m\tResult\t\tError\t\tTime(s)\n');
 for i = 1:length(m_values)
-    tic;
-    [result, error, R] = romberg_integration(f0, a, b, tol, m_values(i));
-    time = toc;
+    [result, error, R, time] = romberg_integration(f0, a, b, tol, m_values(i));
     fprintf('%d\t%.6f\t%.6e\t%.6f\n', m_values(i), result, error, time);
 end
