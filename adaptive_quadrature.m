@@ -1,4 +1,4 @@
-ftion [integral, subdivisions, elapsed_time] = adaptive_quadrature(f, a, b, tol)
+function [integral, subdivisions, elapsed_time] = adaptive_quadrature(f, a, b, tol)
     % Input:
     % f: function handle for the integrand
     % a: lower limit of integration
@@ -14,8 +14,8 @@ ftion [integral, subdivisions, elapsed_time] = adaptive_quadrature(f, a, b, tol)
     elapsed_time = toc; % Stop the timer
 end
 
-ftion [integral, subdivisions] = adaptive_quadrature_rec(f, a, b, tol, count)
-    % Recursive ftion for adaptive trapezoidal integration
+function [integral, subdivisions] = adaptive_quadrature_rec(f, a, b, tol, count)
+    % Recursive function for adaptive trapezoidal integration
     mid = (a + b) / 2;
 
     % Compute trapezoidal rule for [a, b]
@@ -39,4 +39,4 @@ ftion [integral, subdivisions] = adaptive_quadrature_rec(f, a, b, tol, count)
         integral = left_integral + right_integral;
         subdivisions = left_count + right_count;
     end
-endright
+end
