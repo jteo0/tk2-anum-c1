@@ -1,0 +1,71 @@
+function compute_basis_analysis(x, y, t)
+    n = length(t);
+
+    % Initialize
+    A_basis_A = zeros(n, n);
+    A_basis_B = zeros(n, n);
+    A_basis_C = zeros(n, n);
+    A_basis_D = zeros(n, n);
+
+    % Construct matrix
+    for i = 1:n
+        for j = 1:n
+            % Basis A: Φ_i(t) = t^(j-1)
+            A_basis_A(i, j) = t(i)^(j-1);
+
+            % Basis B: Φ_i(t) = (t - 60)^(j-1)
+            A_basis_B(i, j) = (t(i) - 60)^(j-1);
+
+            % Basis C: Φ_i(t) = (t - 480)^(j-1)
+            A_basis_C(i, j) = (t(i) - 480)^(j-1);
+
+            % Basis D: Φ_i(t) = ((t - 480) / 30)^(j-1)
+            A_basis_D(i, j) = ((t(i) - 480) / 30)^(j-1);
+        end
+    end
+
+    % Solve for coefficients
+    c_A_y = A_basis_A \ y';
+    c_B_y = A_basis_B \ y';
+    c_C_y = A_basis_C \ y';
+    c_D_y = A_basis_D \ y';
+
+    c_A_x = A_basis_A \ x';
+    c_B_x = A_basis_B \ x';
+    c_C_x = A_basis_C \ x';
+    c_D_x = A_basis_D \ x';
+
+    % Condition numbers
+    cond_A = cond(A_basis_A);
+    cond_B = cond(A_basis_B);
+    cond_C = cond(A_basis_C);
+    cond_D = cond(A_basis_D);
+
+    % Display results
+    fprintf('Condition Number for Basis A: %.15e\n', cond_A);
+    fprintf('Condition Number for Basis B: %.15e\n', cond_B);
+    fprintf('Condition Number for Basis C: %.15e\n', cond_C);
+    fprintf('Condition Number for Basis D: %.15e\n', cond_D);
+
+    % Display coefficients for all bases
+    fprintf('\nCoefficients for Basis A for x:\n');
+    disp(c_A_x);
+    fprintf('\nCoefficients for Basis A for y:\n');
+    disp(c_A_y);
+
+    fprintf('\nCoefficients for Basis B for x:\n');
+    disp(c_B_x);
+    fprintf('\nCoefficients for Basis B for y:\n');
+    disp(c_B_y);
+
+    fprintf('\nCoefficients for Basis C for x:\n');
+    disp(c_C_x);
+    fprintf('\nCoefficients for Basis C for y:\n');
+    disp(c_C_y);
+
+    fprintf('\nCoefficients for Basis D for x:\n');
+    disp(c_D_x);
+    fprintf('\nCoefficients for Basis D for y:\n');
+    disp(c_D_y);
+end
+
