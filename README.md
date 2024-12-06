@@ -62,3 +62,16 @@ grid on;
 
 ```
 script ini melakukan cubic spline untuk x dan juga y, kemudian membuat visualisasinya
+
+## Nomor 2
+Berikut merupakan langkah-langkah yang dijalankan untuk memperoleh hasil eksperimen yang ada pada laporan:
+
+1. Buka dan jalankan file ```main2b.m``` untuk memperoleh hasil integrasi dari ketiga metode dimana y = 1
+
+2. Buka dan jalankan file ```main2c.m``` untuk memperoleh hasil integrasi dari ketiga metode dimana y = 0
+
+### Metode Composite Simpson
+
+### Metode Adaptive Quadrature
+
+### Metode Romberg
