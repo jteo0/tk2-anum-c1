@@ -84,3 +84,59 @@ function c_new = extend_divided_differences(t_new, f_new, c_old)
     c_new(n) = diff / product;
 end
 
+% function c_new = extend_divided_differences(t_new, f_new, c_old)
+%     n = length(t_new);
+%     c_new = [c_old, 0];
+    
+%     % Display extension header
+%     fprintf('\nExtending Divided Differences Table for new point t = %.2f:\n', t_new(end));
+%     fprintf('%-10s ', 't');
+%     for j = 1:n
+%         if j == 1
+%             fprintf('%-15s ', 'f(t)');
+%         else
+%             fprintf('%-15s ', sprintf('f[%d]', j-1));
+%         end
+%     end
+%     fprintf('\n');
+    
+%     % Display separator
+%     fprintf('%s\n', repmat('-', 1, 10 + 15*n));
+    
+%     % Calculate and display new differences
+%     F_new = f_new(end);
+%     fprintf('%-10.2f %-15.6e ', t_new(end), F_new);
+    
+%     diff = F_new;
+%     product = 1;
+    
+%     % Calculate each term and display
+%     for i = 1:n-1
+%         term = c_old(i);
+%         local_product = 1;
+        
+%         % Calculate product terms
+%         for j = 1:i-1
+%             local_product = local_product * (t_new(n) - t_new(j));
+%             term = term * (t_new(n) - t_new(j));
+%         end
+        
+%         diff = diff - term;
+%         product = product * (t_new(n) - t_new(i));
+        
+%         % Display intermediate result
+%         next_diff = diff / product;
+%         fprintf('%-15.6e ', next_diff);
+%     end
+%     fprintf('\n\n');
+    
+%     % Set final coefficient
+%     c_new(n) = diff / product;
+    
+%     % Display final coefficients
+%     fprintf('Final coefficients:\n');
+%     for i = 1:n
+%         fprintf('c%d = %-15.6e\n', i-1, c_new(i));
+%     end
+%     fprintf('\n');
+% end
