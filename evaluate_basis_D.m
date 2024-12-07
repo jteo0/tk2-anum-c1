@@ -1,5 +1,5 @@
 % Fungsi evaluasi dengan metode Horner
-function p = evaluate_basis_N(t, c)
+function p = evaluate_basis_D(t, c)
     s = (t - 480) / 30;
     n = length(c);
     hasil = c(n);
