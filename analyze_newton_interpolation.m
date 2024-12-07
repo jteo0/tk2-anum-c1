@@ -32,15 +32,15 @@ function analyze_newton_interpolation()
         % fprintf('\np9_x(i): %.7e, p10_x(i): %.7e, p9_y(i): %.7e, p10_y(i): %.7e',p9_x(i), p10_x(i), p9_y(i), p10_y(i));
     end
 
-    fprintf('\nInterpolation p_9 for x:\n');
-    disp(p9_x);
-    fprintf('\nInterpolation p_10 for x:\n');
-    disp(p10_x);
+    % fprintf('\nInterpolation p_9 for x:\n');
+    % disp(p9_x);
+    % fprintf('\nInterpolation p_10 for x:\n');
+    % disp(p10_x);
 
-    fprintf('\nInterpolation p_9 for y:\n');
-    disp(p9_y);
-    fprintf('\nInterpolation p_10 for y:\n');
-    disp(p10_y);
+    % fprintf('\nInterpolation p_9 for y:\n');
+    % disp(p9_y);
+    % fprintf('\nInterpolation p_10 for y:\n');
+    % disp(p10_y);
 
     % Plot results
     figure;
