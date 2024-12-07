@@ -1,4 +1,4 @@
-function compute_basis_analysis(x, y, t)
+function [A_basis_A, A_basis_B, A_basis_C, A_basis_D, c_x, c_y] = compute_basis_analysis(x, y, t)
     n = length(t);
 
     % Initialize
@@ -35,17 +35,44 @@ function compute_basis_analysis(x, y, t)
     c_C_x = A_basis_C \ x';
     c_D_x = A_basis_D \ x';
 
+    c_y = [c_A_y c_B_y c_C_y c_D_y];
+    c_x = [c_A_x c_B_x c_C_x c_D_x];
+
     % Condition numbers
-    cond_A = cond(A_basis_A);
-    cond_B = cond(A_basis_B);
-    cond_C = cond(A_basis_C);
-    cond_D = cond(A_basis_D);
+    cond_A_1 = cond(A_basis_A, 1);
+    cond_B_1 = cond(A_basis_B, 1);
+    cond_C_1 = cond(A_basis_C, 1);
+    cond_D_1 = cond(A_basis_D, 1);
 
     % Display results
-    fprintf('Condition Number for Basis A: %.15e\n', cond_A);
-    fprintf('Condition Number for Basis B: %.15e\n', cond_B);
-    fprintf('Condition Number for Basis C: %.15e\n', cond_C);
-    fprintf('Condition Number for Basis D: %.15e\n', cond_D);
+    fprintf('Condition Number 1 for Basis A: %.15e\n', cond_A_1);
+    fprintf('Condition Number 1 for Basis B: %.15e\n', cond_B_1);
+    fprintf('Condition Number 1 for Basis C: %.15e\n', cond_C_1);
+    fprintf('Condition Number 1 for Basis D: %.15e\n', cond_D_1);
+
+    % Condition numbers
+    cond_A_2 = cond(A_basis_A, 2);
+    cond_B_2 = cond(A_basis_B, 2);
+    cond_C_2 = cond(A_basis_C, 2);
+    cond_D_2 = cond(A_basis_D, 2);
+
+    % Display results
+    fprintf('Condition Number 2 for Basis A: %.15e\n', cond_A_2);
+    fprintf('Condition Number 2 for Basis B: %.15e\n', cond_B_2);
+    fprintf('Condition Number 2 for Basis C: %.15e\n', cond_C_2);
+    fprintf('Condition Number 2 for Basis D: %.15e\n', cond_D_2);
+
+    % Condition numbers
+    cond_A_inf = cond(A_basis_A, inf);
+    cond_B_inf = cond(A_basis_B, inf);
+    cond_C_inf = cond(A_basis_C, inf);
+    cond_D_inf = cond(A_basis_D, inf);
+
+    % Display results
+    fprintf('Condition Number inf for Basis A: %.15e\n', cond_A_inf);
+    fprintf('Condition Number inf for Basis B: %.15e\n', cond_B_inf);
+    fprintf('Condition Number inf for Basis C: %.15e\n', cond_C_inf);
+    fprintf('Condition Number inf for Basis D: %.15e\n', cond_D_inf);
 
     % Display coefficients for all bases
     fprintf('\nCoefficients for Basis A for x:\n');
