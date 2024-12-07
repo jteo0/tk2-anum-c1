@@ -24,6 +24,13 @@ compute_basis_analysis(x, y, t);
 
 function ```compute_basis_analysis``` akan menghitung condition number dan koefisien untuk setiap pilihan basis dari A hingga D
 
+### Bagian 3
+Run ```script_3``` untuk menghasilkan plot kedua polinomial dengan interval dari *frame* ke−0 hingga *frame* ke−540.
+
+```script_3``` pertama-tama program akan mencari persamaan koefisien c10<sub>x</sub> dan c10<sub>y</sub> untuk membentuk polinomial p<sub>10</sub>(t).
+
+Setelah itu, barulah program mengevaluasi p<sub>9</sub>(t) dan p<sub>10</sub>(t) pada interval dari *frame* ke−0 hingga *frame* ke−540.
+
 ### Bagian 4
 
 #### Natural Cubic Spline
