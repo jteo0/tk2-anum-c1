@@ -6,12 +6,12 @@ function [coeff_x, coeff_y] = get_newton_coefficients(t, x, y)
     % Display coefficients
     fprintf('\nCoefficients for x(t):\n');
     for i = 1:length(coeff_x)
-        fprintf('c%d = %.6f\n', i-1, coeff_x(i));
+        fprintf('c%d = %-15.6e\n', i-1, coeff_x(i));
     end
     
     fprintf('\nCoefficients for y(t):\n');
     for i = 1:length(coeff_y)
-        fprintf('c%d = %.6f\n', i-1, coeff_y(i));
+        fprintf('c%d = %-15.6e\n', i-1, coeff_y(i));
     end
 end
 
