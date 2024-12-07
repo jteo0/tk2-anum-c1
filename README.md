@@ -71,7 +71,7 @@ Berikut merupakan langkah-langkah yang dijalankan untuk memperoleh hasil eksperi
 2. Buka dan jalankan file ```main2c.m``` untuk memperoleh hasil integrasi dari ketiga metode dimana y = 0
 
 ### Metode Composite Simpson
-Pada kode ```main2b.m```, snippet berikut menggunakan <i>composite</i> simpson untuk mencari hasil integral dengan fungsi, interval, dan jumlah subdivisi yang telah ditentukan. Selain hasil integral, waktu komputasi juga disimpan dan dikeluarkan.
+Pada kode ```main2b.m```, snippet berikut akan memanggil ```composite_simpson.m``` yang mencari hasil integral menurut fungsi, interval, dan jumlah subdivisi yang telah ditentukan menggunakan metode <i>composite</i> simpson. Selain hasil integral, waktu komputasi juga disimpan dan dikeluarkan.
 ```
 % Warm-up runs for Simpson
 fprintf('\nPerforming warm-up runs for Composite Simpson...\n');
@@ -106,7 +106,7 @@ end
 ```
 
 ### Metode Adaptive Quadrature
-Berikut adalah snippet pada ```main2b.m``` yang menggunakan <i>adaptive</i> quadrature untuk menghitung integral numerik, jumlah subdivisi yang digunakan, dan waktu komputasinya:
+Snippet berikut pada ```main2b.m``` akan memanggil ```adaptive_quadrature.m``` untuk menerapkan metode integrasi <i>adaptive</i> quadrature untuk menghitung integral numerik, jumlah subdivisi yang digunakan, dan waktu komputasinya.
 ```
 % Test Adaptive Quadrature for y=1
 fprintf('\nAdaptive Quadrature Result:\n');
@@ -125,7 +125,7 @@ fprintf('Result: %.6f\nSubdivisions: %d\nTime: %.6f s\n', ...
 ```
 
 ### Metode Romberg
-Berikut adalah snippet ```main2b.m``` yang menggunakan integrasi romberg untuk menghitung integral numerik, serta menunjukkan waktu komputasi dan error:
+Berikut adalah snippet ```main2b.m``` yang menggunakan integrasi romberg dengan memanggil ```romberg_integration.m``` untuk menghitung integral numerik, serta menunjukkan waktu komputasi dan error:
 ```
 % Warm-up runs for Romberg
 fprintf('\nPerforming warm-up runs for Romberg Integration...\n');
