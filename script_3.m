@@ -12,10 +12,10 @@ t_new = 600;
 x_new = 2.336957;
 y_new = 50;
 
-% Langkah 3: Hitung s untuk t = 600
-s = (t_new - 480) / 30; % s = 4
+% Hitung s untuk t = 600
+s = (t_new - 480) / 30; 
 
-% Langkah 4: Evaluasi p9(t_new) menggunakan metode Horner
+% Evaluasi p9(t_new) menggunakan metode Horner
 p9_x = evaluate_basis_D(t_new, c_x);
 p9_y = evaluate_basis_D(t_new, c_y);
 
@@ -25,21 +25,20 @@ s_power_10 = s^10;
 c10_x = (x_new - p9_x) / s_power_10;
 c10_y = (y_new - p9_y) / s_power_10;
 
-% Langkah 6: Perbarui koefisien
+% Perbarui koefisien
 c_x_new = [c_x, c10_x];
 c_y_new = [c_y, c10_y];
 
-% Langkah 7: Evaluasi p9(t) dan p10(t) pada interval t = 0 hingga t = 540
+% Evaluasi p9(t) dan p10(t) pada interval t = 0 hingga t = 540
 t_eval = linspace(0, 540, 541);
 
-% Fungsi evaluasi
 p9_x_eval = arrayfun(@(t) evaluate_basis_D(t, c_x), t_eval);
 p9_y_eval = arrayfun(@(t) evaluate_basis_D(t, c_y), t_eval);
 
 p10_x_eval = arrayfun(@(t) evaluate_basis_D(t, c_x_new), t_eval);
 p10_y_eval = arrayfun(@(t) evaluate_basis_D(t, c_y_new), t_eval);
 
-% Langkah 8: Plot kedua polinomial
+% Plot kedua polinomial
 figure;
 subplot(2,1,1);
 plot(t_eval, p9_x_eval, 'b-', 'LineWidth', 1.5);
