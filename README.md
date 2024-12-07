@@ -62,3 +62,99 @@ grid on;
 
 ```
 script ini melakukan cubic spline untuk x dan juga y, kemudian membuat visualisasinya
+
+## Nomor 2
+Berikut merupakan langkah-langkah yang dijalankan untuk memperoleh hasil eksperimen yang ada pada laporan:
+
+1. Buka dan jalankan file ```main2b.m``` untuk memperoleh hasil integrasi dari ketiga metode dimana y = 1
+
+2. Buka dan jalankan file ```main2c.m``` untuk memperoleh hasil integrasi dari ketiga metode dimana y = 0
+
+### Metode Composite Simpson
+Pada kode ```main2b.m```, snippet berikut akan memanggil ```composite_simpson.m``` yang mencari hasil integral menurut fungsi, interval, dan jumlah subdivisi yang telah ditentukan menggunakan metode <i>composite</i> simpson. Selain hasil integral, waktu komputasi juga disimpan dan dikeluarkan.
+```
+% Warm-up runs for Simpson
+fprintf('\nPerforming warm-up runs for Composite Simpson...\n');
+for i = 1:3  % Do 3 warm-up runs with middle N value
+    [~, ~] = composite_simpson(f1, a, b, N_values(ceil(length(N_values)/2)));
+end
+
+% Test Composite Simpson for y=1
+fprintf('\nComposite Simpson Results:\n');
+fprintf('N\tResult\t\tTime(s)\n');
+for i = 1:length(N_values)
+    [result, time] = composite_simpson(f1, a, b, N_values(i));
+    fprintf('%d\t%.6f\t%.6f\n', N_values(i), result, time);
+end
+```
+
+Untuk ```main2c.m```, snippet yang dijalankan untuk <i>composite</i> simpson adalah:
+```
+% Warm-up runs for Simpson
+fprintf('\nPerforming warm-up runs for Composite Simpson...\n');
+for i = 1:3  % Do 3 warm-up runs with middle N value
+    [~, ~] = composite_simpson(f0, a, b, N_values(ceil(length(N_values)/2)));
+end
+
+% Test Composite Simpson for y=0
+fprintf('\nComposite Simpson Results:\n');
+fprintf('N\tResult\t\tTime(s)\n');
+for i = 1:length(N_values)
+    [result, time] = composite_simpson(f0, a, b, N_values(i));
+    fprintf('%d\t%.6f\t%.6f\n', N_values(i), result, time);
+end
+```
+
+### Metode Adaptive Quadrature
+Snippet berikut pada ```main2b.m``` akan memanggil ```adaptive_quadrature.m``` untuk menerapkan metode integrasi <i>adaptive</i> quadrature untuk menghitung integral numerik, jumlah subdivisi yang digunakan, dan waktu komputasinya.
+```
+% Test Adaptive Quadrature for y=1
+fprintf('\nAdaptive Quadrature Result:\n');
+[adapt_result1, adapt_subdivs1, adapt_time1] = adaptive_quadrature(f1, a, b, tol);
+fprintf('Result: %.6f\nSubdivisions: %d\nTime: %.6f s\n', ...
+    adapt_result1, adapt_subdivs1, adapt_time1);
+```
+
+Berikut adalah snippet di ```main2c.m```:
+```
+% Test Adaptive Quadrature for y=0
+fprintf('\nAdaptive Quadrature Result:\n');
+[adapt_result0, adapt_subdivs0, adapt_time0] = adaptive_quadrature(f0, a, b, tol);
+fprintf('Result: %.6f\nSubdivisions: %d\nTime: %.6f s\n', ...
+    adapt_result0, adapt_subdivs0, adapt_time0);
+```
+
+### Metode Romberg
+Berikut adalah snippet ```main2b.m``` yang menggunakan integrasi romberg dengan memanggil ```romberg_integration.m``` untuk menghitung integral numerik, serta menunjukkan waktu komputasi dan error:
+```
+% Warm-up runs for Romberg
+fprintf('\nPerforming warm-up runs for Romberg Integration...\n');
+for i = 1:3  % Do 3 warm-up runs with middle m value
+    [~, ~, ~] = romberg_integration(f1, a, b, tol, m_values(ceil(length(m_values)/2)));
+end
+
+% Test Romberg for y=1
+fprintf('\nRomberg Integration Results:\n');
+fprintf('m\tResult\t\tError\t\tTime(s)\n');
+for i = 1:length(m_values)
+    [result, error, R, time] = romberg_integration(f1, a, b, tol, m_values(i));
+    fprintf('%d\t%.6f\t%.6e\t%.6f\n', m_values(i), result, error, time);
+end
+```
+
+Berikut adalah snippet dari ```main2.m```:
+```
+% Warm-up runs for Romberg
+fprintf('\nPerforming warm-up runs for Romberg Integration...\n');
+for i = 1:3  % Do 3 warm-up runs with middle m value
+    [~, ~, ~] = romberg_integration(f0, a, b, tol, m_values(ceil(length(m_values)/2)));
+end
+
+% Test Romberg for y=0
+fprintf('\nRomberg Integration Results:\n');
+fprintf('m\tResult\t\tError\t\tTime(s)\n');
+for i = 1:length(m_values)
+    [result, error, R, time] = romberg_integration(f0, a, b, tol, m_values(i));
+    fprintf('%d\t%.6f\t%.6e\t%.6f\n', m_values(i), result, error, time);
+end
+```
