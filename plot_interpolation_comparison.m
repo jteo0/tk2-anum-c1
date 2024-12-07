@@ -7,7 +7,7 @@ function [p9_vals, p10_vals] = plot_interpolation_comparison(x, y, c_N_x, c_N_y,
     t_extended = [t_range, t_new];
 
     % Extend coefficients to p10
-    [c_N_x_10, c_N_y_10] = compute_basis_N(x_extended, y_extended, t_extended);
+    [c_N_x_10, c_N_y_10] = compute_basis_D(x_extended, y_extended, t_extended);
 
     % Evaluate both polynomials over the range
     p9_x = zeros(size(t_range));
@@ -17,23 +17,23 @@ function [p9_vals, p10_vals] = plot_interpolation_comparison(x, y, c_N_x, c_N_y,
 
     for i = 1:length(t_range)
       % Evaluate p9
-      p9_x(i) = evaluate_pN(t_range(i), c_N_x);
-      p9_y(i) = evaluate_pN(t_range(i), c_N_y);
+      p9_x(i) = evaluate_basis_D(t_range(i), c_N_x);
+      p9_y(i) = evaluate_basis_D(t_range(i), c_N_y);
 
       % Evaluate p10
-      p10_x(i) = evaluate_pN(t_range(i), c_N_x_10);
-      p10_y(i) =  evaluate_pN(t_range(i), c_N_y_10);
+      p10_x(i) = evaluate_basis_D(t_range(i), c_N_x_10);
+      p10_y(i) =  evaluate_basis_D(t_range(i), c_N_y_10);
   end
 
-    fprintf('\nInterpolation p_9 for x:\n');
-    disp(p9_x);
-    fprintf('\nInterpolation p_10 for x:\n');
-    disp(p10_x);
+    % fprintf('\nInterpolation p_9 for x:\n');
+    % disp(p9_x);
+    % fprintf('\nInterpolation p_10 for x:\n');
+    % disp(p10_x);
 
-    fprintf('\nInterpolation p_9 for y:\n');
-    disp(p9_y);
-    fprintf('\nInterpolation p_10 for y:\n');
-    disp(p10_y);
+    % fprintf('\nInterpolation p_9 for y:\n');
+    % disp(p9_y);
+    % fprintf('\nInterpolation p_10 for y:\n');
+    % disp(p10_y);
 
     % Plot results
     figure;
@@ -55,18 +55,7 @@ function [p9_vals, p10_vals] = plot_interpolation_comparison(x, y, c_N_x, c_N_y,
     p10_vals = [p10_x; p10_y];
 end
 
- % Function to evaluate pN using Horner's method
-function val = evaluate_pN(t_val, coeff)
-    s = (t_val - 480) / 30;
-    n = length(coeff);
-    result = coeff(n);
-    for i = n-1:-1:1
-        result = coeff(i) + s * result;
-    end
-    val = result;
-end
-
-function [c_N_x, c_N_y] = compute_basis_N(x_values, y_values, t_values)
+function [c_N_x, c_N_y] = compute_basis_D(x_values, y_values, t_values)
     n = length(t_values);
     A_basis_N = zeros(n, n);
 

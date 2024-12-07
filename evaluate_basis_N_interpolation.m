@@ -3,8 +3,8 @@ function [p_basis_N_x, p_basis_N_y] = evaluate_basis_N_interpolation(t_eval, t_p
     [c_x, c_y] = get_basis_N_coefficients(t_points, x_points, y_points);
     
     % Evaluate polynomials at t_eval points
-    p_basis_N_x = arrayfun(@(t) evaluate_basis_N(t, c_x), t_eval);
-    p_basis_N_y = arrayfun(@(t) evaluate_basis_N(t, c_y), t_eval);
+    p_basis_N_x = arrayfun(@(t) evaluate_basis_D(t, c_x), t_eval);
+    p_basis_N_y = arrayfun(@(t) evaluate_basis_D(t, c_y), t_eval);
 end
 
 function [c_x, c_y] = get_basis_N_coefficients(t, x, y)
