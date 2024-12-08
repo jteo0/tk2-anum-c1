@@ -16,8 +16,13 @@ f1 = @(x) -log(1./(1 + exp(-x)));
 ref_value = dilog(1+exp(-10)) - dilog(2);
 fprintf('Reference value (exact): %.10f\n\n', ref_value);
 
-% Warm-up runs for Simpson
-fprintf('\nPerforming warm-up runs for Composite Simpson...\n');
+% Warm-up runs
+% Warm-up runs to get more accurate timing measurements
+% Purpose:
+% 1. Allow MATLAB to optimize code through JIT compilation 
+% 2. Ensure initial memory allocations are completed
+% 3. Avoid first-run overhead that could skew benchmarking results
+fprintf('\nPerforming warm-up runs...\n');
 for i = 1:3
    [~, ~] = composite_simpson(f1, a, b, N_values(ceil(length(N_values)/2)));
 end
@@ -44,12 +49,6 @@ fprintf('\nAdaptive Quadrature Result:\n');
 adapt_error = abs(adapt_result1 - ref_value)/abs(ref_value);
 fprintf('Result: %.6f\nSubdivisions: %d\nTime: %.6f s\nRel. Error: %.2e\n', ...
    adapt_result1, adapt_subdivs1, adapt_time1, adapt_error);
-
-% Warm-up runs for Romberg
-fprintf('\nPerforming warm-up runs for Romberg Integration...\n');
-for i = 1:5
-   [~, ~, ~] = romberg_integration(f1, a, b,  m_values(ceil(length(m_values)/2)));
-end
 
 % Test Romberg for y=1
 fprintf('\nRomberg Integration Results:\n');

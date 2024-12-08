@@ -149,11 +149,6 @@ Berikut merupakan langkah-langkah yang dijalankan untuk memperoleh hasil eksperi
 ### Metode Composite Simpson
 Pada kode ```main2b.m```, snippet berikut akan memanggil ```composite_simpson.m``` yang mencari hasil integral menurut fungsi, interval, dan jumlah subdivisi yang telah ditentukan menggunakan metode <i>composite</i> simpson. Selain hasil integral, waktu komputasi juga disimpan dan dikeluarkan.
 ```
-% Warm-up runs for Simpson
-fprintf('\nPerforming warm-up runs for Composite Simpson...\n');
-for i = 1:3  % Do 3 warm-up runs with middle N value
-    [~, ~] = composite_simpson(f1, a, b, N_values(ceil(length(N_values)/2)));
-end
 
 % Test Composite Simpson for y=1
 fprintf('\nComposite Simpson Results:\n');
@@ -166,11 +161,6 @@ end
 
 Untuk ```main2c.m```, snippet yang dijalankan untuk <i>composite</i> simpson adalah:
 ```
-% Warm-up runs for Simpson
-fprintf('\nPerforming warm-up runs for Composite Simpson...\n');
-for i = 1:3  % Do 3 warm-up runs with middle N value
-    [~, ~] = composite_simpson(f0, a, b, N_values(ceil(length(N_values)/2)));
-end
 
 % Test Composite Simpson for y=0
 fprintf('\nComposite Simpson Results:\n');
@@ -203,11 +193,6 @@ fprintf('Result: %.6f\nSubdivisions: %d\nTime: %.6f s\n', ...
 ### Metode Romberg
 Berikut adalah snippet ```main2b.m``` yang menggunakan integrasi romberg dengan memanggil ```romberg_integration.m``` untuk menghitung integral numerik, serta menunjukkan waktu komputasi dan error:
 ```
-% Warm-up runs for Romberg
-fprintf('\nPerforming warm-up runs for Romberg Integration...\n');
-for i = 1:3  % Do 3 warm-up runs with middle m value
-    [~, ~, ~] = romberg_integration(f1, a, b, tol, m_values(ceil(length(m_values)/2)));
-end
 
 % Test Romberg for y=1
 fprintf('\nRomberg Integration Results:\n');
@@ -220,11 +205,6 @@ end
 
 Berikut adalah snippet dari ```main2c.m```:
 ```
-% Warm-up runs for Romberg
-fprintf('\nPerforming warm-up runs for Romberg Integration...\n');
-for i = 1:3  % Do 3 warm-up runs with middle m value
-    [~, ~, ~] = romberg_integration(f0, a, b, tol, m_values(ceil(length(m_values)/2)));
-end
 
 % Test Romberg for y=0
 fprintf('\nRomberg Integration Results:\n');
