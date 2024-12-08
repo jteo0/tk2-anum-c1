@@ -218,7 +218,7 @@ for i = 1:length(m_values)
 end
 ```
 
-Berikut adalah snippet dari ```main2.m```:
+Berikut adalah snippet dari ```main2c.m```:
 ```
 % Warm-up runs for Romberg
 fprintf('\nPerforming warm-up runs for Romberg Integration...\n');
