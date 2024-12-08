@@ -1,6 +1,4 @@
-# tk2-anum-c2
-ayo :D:D
-
+# tk2-anum-c2s
 ## Nomor 1
 
 ### Bagian 1
