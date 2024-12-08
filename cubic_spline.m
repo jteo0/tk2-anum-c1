@@ -2,7 +2,6 @@ function [a, b, c, d] = cubic_spline(x, y)
     n = length(x) - 1; % Number of intervals
     h = diff(x);       % Step sizes
 
-    % Set up the system of equations
     A = zeros(n + 1);
     b_vector = zeros(n + 1, 1);
 
@@ -10,7 +9,6 @@ function [a, b, c, d] = cubic_spline(x, y)
     A(1, 1) = 1; % Natural spline: second derivative = 0 at x0
     A(end, end) = 1; % Natural spline: second derivative = 0 at xn
 
-    % Interior equations
     for i = 2:n
         A(i, i - 1) = h(i - 1);
         A(i, i) = 2 * (h(i - 1) + h(i));
