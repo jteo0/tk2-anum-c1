@@ -48,7 +48,6 @@ title('Polinomial Interpolasi untuk x');
 xlabel('t');
 ylabel('x');
 legend('p_9(t)', 'p_{10}(t)');
-ylim([0 4]);
 grid on;
 
 subplot(2,1,2);
